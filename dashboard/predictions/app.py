@@ -24,7 +24,7 @@ def predict():
         df = pd.DataFrame([input_data])
 
         if 'Pohlavie_Žena' in df.columns:
-            df['Pohlavie_Žena'] = df['Pohlavie_Žena'].map({'Muž': 1, 'Žena': 0})
+            df['Pohlavie_Žena'] = df['Pohlavie_Žena'].map({'Muž': 0, 'Žena': 1})
         X_transformed = preprocessor.transform(df)
 
         

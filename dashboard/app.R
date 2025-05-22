@@ -9,7 +9,7 @@ library(gt)
 library(DT)
 library(plotly)
 library(httr)
-library(jsonlite)
+
 
 
 shap_data <- read_csv("shap_values.csv", show_col_types = FALSE)  # Súbor s hodnotami SHAP z každej vlny pandémie
@@ -1023,7 +1023,7 @@ server <- function(input, output, session) {
       Typ = c("Numerický", "Kategorický", "Binárny", "Binárny", "Binárny",
               "Binárny", "Binárny", "Binárny", "Binárny", "Binárny", "Binárny",
               "Binárny", "Kategorický"),
-      Popis = c("Vek pacienta v rokoch", "0/1, (Žena/Muž)", "0/1, (Nie/Áno)", "0/1, (Nie/Áno)",
+      Popis = c("Vek pacienta v rokoch", "0/1, (Muž/Žena)", "0/1, (Nie/Áno)", "0/1, (Nie/Áno)",
                 "0/1, (Nie/Áno)", "0/1, (Nie/Áno)", "0/1, (Nie/Áno)", "0/1, (Nie/Áno)",
                 "0/1, (Nie/Áno)", "0/1, (Nie/Áno)", "0/1, (Nie/Áno)", "0/1, (Nie/Áno)",
                 "1=Prepustený do domáceho liečenia, 2=Preložený na iné oddelenie, 3=Zomrel")
