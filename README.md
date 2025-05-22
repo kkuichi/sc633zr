@@ -1,7 +1,5 @@
 # Názov práce
-## **_Prognóza ochorenia COVID-19 pomocou dátovej analytiky_**
-
----
+### **Prognóza ochorenia COVID-19 pomocou dátovej analytiky**
 # Popis
 Tento repozitár obsahuje praktickú časť bakalárskej práce, cieľom ktorej je vybrať vhodné modely strojového učenia na predpovedanie závažnosti priebehu ochorenia COVID-19 na základe poskytnutých dát o pacientoch.
 
@@ -16,7 +14,7 @@ V rámci riešenia bol navrhnutý **dvojúrovňový klasifikačný prístup**:
 - **Druhá úroveň** klasifikuje závažnosť priebehu ochorenia u preživších pacientov:
   - Prepustený do domáceho liečenia, eventuálne sociálneho zariadenia
   - Preložený na iné oddelenie
----
+
 # Postup práce zahŕňal tieto kroky:
 - **Exploratívna analýza dát** - získanie základných štatistík a vizualizácií na pochopenie štruktúry a rozdelenia atribútov.
 - **Predspracovanie dát** - čistenie údajov, transformácia premenných a príprava vstupov pre modely.
@@ -26,13 +24,11 @@ V rámci riešenia bol navrhnutý **dvojúrovňový klasifikačný prístup**:
   - SVM
   - Random Forest
 - **Optimalizácia hyperparametrov** -  pomocou **GridSearchCV** s 5-násobnou krížovou validáciou.
-- **Hodnotenie výkonnosti modelu** - pomocou metrík **hierarchical precision (hP)**, **hierarchical recall (hR)** a **hierarchical F-score (hF)**.
+- **Hodnotenie výkonnosti modelu** - pomocou metrík **h-precision**, **h-recall** a **h-F1-score**, ktoré sú určené pre hierarchickú klasifikáciu.
 - **Interpretácia modelov** - analýza dôležitosti príznakov pomocou **SHAP hodnôt** a **koeficientov logistickej regresie**.
 - **Vizuálna prezentácia výsledkov SHAP** - vytvorenie interaktívneho dashboardu v **R Shiny** na lepšie pochopenie vplyvu príznakov a získanie predikcie závažnosti ochorenia na základe údajov zadaných používateľom.
----
-#### 👉 Aplikácia je dostupná online: [https://shinyapps.io/covid-19](https://chystiakova.shinyapps.io/covid-19_shap/ )
 
----
+
 # Štruktúra projektu
 ```
 .
@@ -55,26 +51,26 @@ V rámci riešenia bol navrhnutý **dvojúrovňový klasifikačný prístup**:
 │   └── XGBoost.ipynb                  # Gradientný boosting 
 │
 ├── pochopenie_dat/                 
-│   └── pochopenie_dat.ipynb           # Exploratívna a štatistická analýza dát
+│   └── pochopenie_dat.ipynb           # Úvodná exploratívna analýza dát
 │
 ├── README.md                          # Tento súbor s popisom projektu
 
 ```
----
+
 # Použité knižnice
 ### Jupyter Notebook: strojové učenie a analýza dát
-| Knižnica            | Verzia  | Popis                                                |
-|---------------------|---------|------------------------------------------------------|
-| pandas              | 2.2.3   | Práca s dátovými štruktúrami a manipulácia s dátami. |
-| numpy               | 2.1.3   | Výpočty a manipulácia s poľami                       |
-| scipy               | 1.15.2  | Štatistické výpočty                                  |
-| seaborn             | 0.13.2  | Vizualizácia dát                                     |
-| matplotlib          | 3.10.0  | Tvorba grafov                                        |
-| scikit-learn        | 1.6.1   | Algoritmy strojového učenia                          |
-| shap                | 0.46.0  | Interpretácia modelov strojového učenia              |
-| imbalanced-learn    | 0.13.0  | Práca s nevyváženými dátami                          |
-| xgboost             | 2.1.4   | Implementácia algoritmu XGBoost                      |
-| hiclass             | v5.0.4  | Metriky pre hierarchickú klasifikáciu                |
+| Knižnica            | Verzia  | Popis                                     |
+|---------------------|---------|-------------------------------------------|
+| pandas              | 2.2.3   | Práca s tabuľkovými dátami                |
+| numpy               | 2.1.3   | Výpočty a manipulácia s poľami            |
+| scipy               | 1.15.2  | Štatistické výpočty                       |
+| seaborn             | 0.13.2  | Vizualizácia dát                          |
+| matplotlib          | 3.10.0  | Tvorba grafov                             |
+| scikit-learn        | 1.6.1   | Algoritmy strojového učenia               |
+| shap                | 0.46.0  | Interpretácia modelov strojového učenia   |
+| imbalanced-learn    | 0.13.0  | Práca s nevyváženými dátami               |
+| xgboost             | 2.1.4   | Implementácia algoritmu XGBoost           |
+| hiclass             | v5.0.4  | Metriky pre hierarchickú klasifikáciu     |
 
 
 
@@ -90,16 +86,17 @@ V rámci riešenia bol navrhnutý **dvojúrovňový klasifikačný prístup**:
 
 ### R: knižnice pre dashboard (Shiny)
 
-| Knižnica   | Verzia  | Popis                                                                      |
-|------------|---------|----------------------------------------------------------------------------|
-| shiny      | 1.10.0  | Framework pre tvorbu interaktívnych webových aplikácií v R                 |
-| readr      | 2.1.5   | Import dát z rôznych formátov                                              |
-| ggplot2    | 3.5.2   | Flexibilná vizualizácia dát                                                |
-| dplyr      | 1.1.4   | Manipulácia s dátovými rámcami                                             |
-| tidyr      | 1.3.1   | Čistenie a transformácia dát                                               |
-| htmltools  | 0.5.8.1 | Vytváranie HTML obsahu pre aplikácie Shiny                                 |
-| writexl    | 1.5.3   | Export dát do Excel súborov                                                |
-| gt         | 1.0.0   | Tvorba tabuliek                                                            |
-| DT         | 0.33    | Generovanie interaktívnych tabuliek s možnosťou filtrovania a stránkovania |
-| plotly     | 4.10.4  | Interaktívne grafy                                                         |
-| httr       | 1.4.7   | Posielanie HTTP požiadaviek                                                |
+| Knižnica   | Verzia  | Popis                                       |
+|------------|---------|---------------------------------------------|
+| shiny      | 1.10.0  | Tvorba interaktívnych webových aplikácií    |
+| readr      | 2.1.5   | Import dát z rôznych formátov               |
+| ggplot2    | 3.5.2   | Flexibilná vizualizácia dát                 |
+| dplyr      | 1.1.4   | Manipulácia s dátovými rámcami              |
+| tidyr      | 1.3.1   | Čistenie a transformácia dát                |
+| htmltools  | 0.5.8.1 | Vytváranie HTML obsahu pre aplikácie Shiny  |
+| writexl    | 1.5.3   | Export dát do Excel súborov                 |
+| gt         | 1.0.0   | Tvorba tabuliek                             |
+| DT         | 0.33    | Interaktívne tabuľky                        |
+| plotly     | 4.10.4  | Interaktívne grafy                          |
+| httr       | 1.4.7   | Posielanie HTTP požiadaviek                 |
+
